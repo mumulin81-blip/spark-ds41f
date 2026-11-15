@@ -64,16 +64,16 @@
     ]
   },
   "host": {
-    "home": "/home/swank",
+    "home": "/opt/ds41f-site/home",
     "memguard_gib": 3,
     "memguard_interval_seconds": 2,
     "startup_memguard_gib": 5,
     "startup_memguard_interval_seconds": 0.25,
     "startup_memguard_wait_seconds": 120,
     "kernel": {
-      "release": "7.0.0-1019-nvidia-64k",
-      "page_size": 65536,
-      "memory_saver_required": true
+      "release": "6.17.0-1031-nvidia",
+      "page_size": 4096,
+      "memory_saver_required": false
     }
   },
   "environment": {
@@ -200,13 +200,13 @@
     "10"
   ],
   "distributed": {
-    "master_addr": "10.0.1.71",
+    "master_addr": "172.16.9.135",
     "master_port": "9999"
   },
   "deployment": {
     "launch_enabled": true,
-    "repository": "https://github.com/christopherowen/spark-ds41f.git",
-    "branch": "main",
+    "repository": "https://github.com/mumulin81-blip/spark-ds41f.git",
+    "branch": "site",
     "path": "{home}/projects/spark-ds41f",
     "ready_url": "http://127.0.0.1:8000/v1/models",
     "ready_timeout_seconds": 3600

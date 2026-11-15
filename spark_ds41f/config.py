@@ -353,7 +353,7 @@ def rendered_docker_command(cluster: dict, node: dict) -> list[str]:
 
 
 def ssh_target(nodes: dict, node: dict) -> str:
-    return f"{nodes['ssh_user']}@{node['name']}"
+    return f"{node.get('ssh_user') or nodes['ssh_user']}@{node['name']}"
 
 
 def transfer_target(nodes: dict, node: dict) -> str:
@@ -361,7 +361,7 @@ def transfer_target(nodes: dict, node: dict) -> str:
     node's name on a CX7 link to the head, such as ``dgxN-internal``, so large copies
     stay off the LAN switch) when it names one, else the node's ``name``."""
     host = node.get("transfer_host") or node["name"]
-    return f"{nodes['ssh_user']}@{host}"
+    return f"{node.get('ssh_user') or nodes['ssh_user']}@{host}"
 
 
 SSH_CONTROL_DIR = Path(tempfile.gettempdir()) / f"spark-ssh-{os.getuid()}"
