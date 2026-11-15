@@ -35,7 +35,7 @@ VLLM_RING_ENV = {
     "VLLM_DISABLE_PYNCCL": "0",
 }
 # Node-map fields for this repository's access to a node, not the fabric.
-SITE_FIELDS = ("transfer_host", "control_ip")
+SITE_FIELDS = ("ssh_user", "transfer_host", "control_ip")
 GID_PINS = ("NCCL_IB_GID_INDEX", "SPARKNET_ROCE_GID_INDEX")
 
 
