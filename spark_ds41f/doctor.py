@@ -986,7 +986,10 @@ def image_content_identity(image: dict) -> dict:
         raise ValueError("running image has no runtime Config")
     if config.get("Labels") is not None and not isinstance(config["Labels"], dict):
         raise ValueError("running image has invalid source labels")
-    content = json.dumps({"layers": layers, "config": config}, sort_keys=True, separators=(",", ":"))
+    # Stores differ in whether they print null-valued keys: overlay2 prints "Cmd": null,
+    # the containerd snapshotter omits the key. Compare the values that exist.
+    normalized = {key: value for key, value in config.items() if value is not None}
+    content = json.dumps({"layers": layers, "config": normalized}, sort_keys=True, separators=(",", ":"))
     return {
         "image_layers": layers,
         "image_content_sha256": hashlib.sha256(content.encode("utf-8")).hexdigest(),
