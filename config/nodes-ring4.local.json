@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "ssh_user": "linzekun",
+  "nodes": [
+    {
+      "name": "spark-4952",
+      "rank": 0,
+      "management_ip": "172.16.9.135",
+      "head": true,
+      "ssh_user": "linzekun",
+      "roce_peer_hcas": {
+        "1": ["rocep1s0f0", "roceP2p1s0f0"],
+        "3": ["rocep1s0f1", "roceP2p1s0f1"]
+      },
+      "roce_subnets": {
+        "rocep1s0f0": "10.100.136.0/24",
+        "roceP2p1s0f0": "10.100.137.0/24",
+        "rocep1s0f1": "10.100.142.0/24",
+        "roceP2p1s0f1": "10.100.143.0/24"
+      }
+    },
+    {
+      "name": "spark-1ead",
+      "rank": 1,
+      "management_ip": "172.16.9.151",
+      "head": false,
+      "ssh_user": "tency",
+      "roce_peer_hcas": {
+        "0": ["rocep1s0f0", "roceP2p1s0f0"],
+        "2": ["rocep1s0f1", "roceP2p1s0f1"]
+      },
+      "roce_subnets": {
+        "rocep1s0f0": "10.100.136.0/24",
+        "roceP2p1s0f0": "10.100.137.0/24",
+        "rocep1s0f1": "10.100.138.0/24",
+        "roceP2p1s0f1": "10.100.139.0/24"
+      }
+    },
+    {
+      "name": "spark-13be",
+      "rank": 2,
+      "management_ip": "172.16.9.157",
+      "head": false,
+      "ssh_user": "spark-13be",
+      "roce_peer_hcas": {
+        "1": ["rocep1s0f1", "roceP2p1s0f1"],
+        "3": ["rocep1s0f0", "roceP2p1s0f0"]
+      },
+      "roce_subnets": {
+        "rocep1s0f1": "10.100.138.0/24",
+        "roceP2p1s0f1": "10.100.139.0/24",
+        "rocep1s0f0": "10.100.140.0/24",
+        "roceP2p1s0f0": "10.100.141.0/24"
+      }
+    },
+    {
+      "name": "spark-0faa",
+      "rank": 3,
+      "management_ip": "172.16.9.155",
+      "head": false,
+      "ssh_user": "spark-0faa",
+      "roce_peer_hcas": {
+        "2": ["rocep1s0f0", "roceP2p1s0f0"],
+        "0": ["rocep1s0f1", "roceP2p1s0f1"]
+      },
+      "roce_subnets": {
+        "rocep1s0f0": "10.100.140.0/24",
+        "roceP2p1s0f0": "10.100.141.0/24",
+        "rocep1s0f1": "10.100.142.0/24",
+        "roceP2p1s0f1": "10.100.143.0/24"
+      }
+    }
+  ]
+}
