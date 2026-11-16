@@ -1,0 +1,35 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: spark site <site@local>
+Date: Mon, 16 Nov 2026 09:30:00 +0800
+Subject: [PATCH] site: open a turn for a trailing system message or one before an assistant turn
+
+Ported from vllm-project/vllm PR #62459. The fork's render_message opened the
+assistant header only for a mid-conversation system message; a system-only
+request, or a system message followed by an assistant history turn, ended the
+prompt at the system role and generation stopped or continued the system text.
+---
+ vllm/tokenizers/deepseek_v41_encoding.py | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/vllm/tokenizers/deepseek_v41_encoding.py b/vllm/tokenizers/deepseek_v41_encoding.py
+--- a/vllm/tokenizers/deepseek_v41_encoding.py
++++ b/vllm/tokenizers/deepseek_v41_encoding.py
+@@ -705,7 +705,14 @@
+             )
+             prompt += task_sp_token
+ 
+-    elif role == "user" or (role == "system" and index > 0):
++    elif role == "user" or (
++        role == "system"
++        and (
++            index > 0
++            or index == len(messages) - 1
++            or messages[index + 1].get("role") == "assistant"
++        )
++    ):
+         # Normal generation: append Assistant + thinking token
+         # (mid-conversation system messages also trigger the assistant header)
+         prompt += ASSISTANT_SP_TOKEN
+-- 
+2.43.0
+
