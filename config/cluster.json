@@ -57,6 +57,21 @@
         "{checkout}/cache",
         "/cache",
         "rw"
+      ],
+      [
+        "/opt/ds41f-site/yee-overlay/model_runner.py",
+        "/opt/spark-ds41f/candidate/vllm/vllm/v1/worker/gpu/model_runner.py",
+        "ro"
+      ],
+      [
+        "/opt/ds41f-site/yee-overlay/site_recall.py",
+        "/opt/spark-ds41f/candidate/vllm/vllm/v1/worker/gpu/site_recall.py",
+        "ro"
+      ],
+      [
+        "/opt/ds41f-site/yee-overlay/vllm_d_recall",
+        "/opt/spark-ds41f/candidate/vllm/vllm_d_recall",
+        "ro"
       ]
     ]
   },
