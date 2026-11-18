@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "promoted_baseline": "2026-11-07-spark-ds41f-1107",
-  "model": "v41-flash-1017",
+  "model": "v41-flash-1017-ab",
   "models": {
     "v41-flash": {
       "snapshot": "{home}/.cache/huggingface/hub/models--deepseek-ai--DeepSeek-V4.1-Flash/snapshots/dba1be0a40aa45a94ad051997016db3960a90277",
@@ -12,6 +12,11 @@
       "hub": "{home}/.cache/huggingface/hub",
       "snapshot": "models--deepseek-ai--DeepSeek-V4.1-Flash-1017/snapshots/1bae0e1088993b9b82de08f59de5be5a34e42170",
       "notes": "DeepSeek-V4.1-Flash-1017, revision 1bae0e10 (2026-10-17): new weights; config, tokenizer and tensor layout unchanged. Its blobs link on into the hub's shared store, so the hub is mounted."
+    },
+    "v41-flash-1017-ab": {
+      "hub": "{home}/.cache/huggingface/hub",
+      "snapshot": "models--deepseek-ai--DeepSeek-V4.1-Flash-1017-Abliterated/snapshots/1bae0e1088993b9b82de08f59de5be5a34e42170",
+      "notes": "Abliterated variant: L10-35 attn.wo_b remapped to sidecar wo_b_l10_35_1017.safetensors; config, tokenizer and tensor layout identical to v41-flash-1017."
     }
   },
   "generation_defaults": {
